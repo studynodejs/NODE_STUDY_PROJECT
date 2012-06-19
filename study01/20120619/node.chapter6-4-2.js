@@ -11,3 +11,4 @@ http.createServer(function (request, response) {
               console.log('Server Running at http://127.0.0.1:4444');
           }
          );
+console.log('test');
