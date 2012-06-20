@@ -24,10 +24,19 @@ server.listen(4444, function() {
 
 // request 요청시
 server.on('request', function (request, response) {
+<<<<<<< .merge_file_a07480
   var req_gb  = '';
+=======
+  var query = 'post';
+>>>>>>> .merge_file_a05188
   if (request.method == 'GET') {
+    query = url.parse(request.url, true).query;
     console.log('GET 요청입니다.');
+<<<<<<< .merge_file_a07480
     contents  = contents1;
+=======
+    console.log(query);
+>>>>>>> .merge_file_a05188
   } else if (request.method == 'POST') {
     request.on('data'
               ,function (data){
@@ -36,7 +45,12 @@ server.on('request', function (request, response) {
               );
     contents  = contents2;
     console.log('POST 요청입니다.');
+    console.log(query);
   }
+
+  var contents  = '<H>요청하셨습니까~~~~?</H>';
+      contents += '<br>';
+      contents += '<H>' + JSON.stringify(query) + '</H>';
   // client response
   response.writeHead(200,{'Content-Type': 'text/html;charset=utf-8'});
   response.end(contents);
