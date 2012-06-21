@@ -25,5 +25,9 @@ server.listen(4444, function() {
 server.on('request', function (request, response) {
   // client response
   response.writeHead(200,{'Content-Type': 'text/html;charset=utf-8'});
-  response.end(ejs.render(contents));
+  response.end(ejs.render(contents,{
+                                    name : 'TEST DATA SEND'
+                                   ,description : 'Helo Ejs With Node.js'
+                                   }
+  ));
 });
