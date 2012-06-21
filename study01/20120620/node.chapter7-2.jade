@@ -2,9 +2,15 @@
 html
   head
     title Index Page
+    style
+      * {margin:0px; padding:0px;}
+      h1 {
+        color:Red;
+      }
+    script(src='http://code.jquery.com/jquery-1.7.js')
+    script
+      $(document).ready(function(){
+        var alpha = 10;
+      });
   body
-    h1 Hello HAML & Jade .. !
-    h2 NAHONG~
-    hr
-    a(href="http://google.co.kr",data-test="multiple Attribute") Go To GOOGLE
-Media
+    h1 Index Page
