@@ -1,7 +1,7 @@
 // 모듈
 var http  = require('http');
 var fs    = require('fs');
-var ejs   = require('ejs');
+var ejs   = require('c:/nodejs/node_modules/ejs');
 var contents  = '';
 
 // ejs file read
