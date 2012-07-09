@@ -1,5 +1,5 @@
 // 모듈
-var connect  = require('c:/nodejs/node_modules/connect');
+var connect  = require('connect');
 var url      = require('url');
 
 // 서버생성
