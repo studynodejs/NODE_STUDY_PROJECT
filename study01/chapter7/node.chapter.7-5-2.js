@@ -1,5 +1,5 @@
 // 모듈
-var connect  = require('connect');
+var connect  = require('/usr/lib/node_modules/connect');//리눅스 에서는 글로벌 설치를 하면 항상 /usr/lib/node_modules/ 밑으로 설치가 된다.
 var url      = require('url');
 
 // 서버생성
@@ -23,4 +23,3 @@ var server = connect.createServer(connect.logger(),function (request, response) 
   console.log('Server Running at http://127.0.0.1:4444');
 });
 
-// test 테스트 test~~~~~~~
