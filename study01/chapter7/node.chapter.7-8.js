@@ -10,7 +10,7 @@ server.use(connect.logger());
 server.use(connect.cookieParser());
 //server.use(connect.session());
 // session middleware 사용시 secret를 반드시 선언해주어야 하는데...... 사용법은 현재 정확히 파악이 안됨....
-// https://github.com/senchalabs/connect/blob/master/examples/cookieSession.js 참고
+// https://github.com/senchalabs/connect/blob/master/examples/cookieSession.js 참고할것
 // (github에서 senchalabs 로 계정검색해보면 자세한 내용 볼수 있는......)
 server.use(connect.session({secret:'test'}));
 server.use(function (request, response){
