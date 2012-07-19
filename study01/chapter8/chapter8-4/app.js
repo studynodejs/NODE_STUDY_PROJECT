@@ -15,7 +15,9 @@ var client  = mysql.createClient({
 });
 
 // create server
-connect.createServer(connect.bodyParser(),connect_router(function(app){
+connect.createServer(connect.bodyParser()
+                    ,connect.logger()
+                    ,connect_router(function(app){
   // GET  - /List
   app.get('/'           ,function (request, response){
     console.log('###########List.html');
@@ -65,9 +67,40 @@ connect.createServer(connect.bodyParser(),connect_router(function(app){
   });
   // GET  - /Edit/:id
   app.get('/Edit/:id'   ,function (request, response){
+    console.log('###########Edit.html');
+    fs.readFile('./Edit.html','utf8', function (error, data){
+      console.log('SELECT * FROM PRODUCTS WHERE ID = '+request.params.id);
+      // select query & result
+      client.query('SELECT * FROM PRODUCTS WHERE ID = ?'
+                  ,[request.params.id]
+                  ,function (error, result) {
+          // response
+          response.writeHead(200,{'Content-Type': 'text/html'});
+          response.end(ejs.render(data,{
+            data:result[0]
+          }));
+      });
+    });
   });
   // POST - /Edit
-  app.get('/Edit'       ,function (request, response){
+  //app.post('/Edit'  ,function (request, response){
+  /*
+   * GET /Edit/:id 로 html 페이지 로딩 후 Post로 받을때도 똑같이 받아줘야 한다.
+   * 쉬팍 당연한거잖아 어떻게 테스트 한거야....ㅡㅡa
+   * */
+  app.post('/Edit/:id'  ,function (request, response){
+    console.log('###########UPDATE & GOTO LIST');
+    // variable(body)
+    var body  = request.body;
+    console.log('UPDATE PRODUCTS SET NAME=?,MODELNUMBER=?,SERIES=? WHERE ID=?');
+    console.log('NAME:'+body.name+'/MODELNUMBER:'+body.modelnumber+'/SERIES:'+body.series+'/ID:'+request.params.id);
+    // update query
+    client.query('UPDATE PRODUCTS SET NAME=?,MODELNUMBER=?,SERIES=? WHERE ID=?'
+                ,[body.name, body.modelnumber, body.series, request.params.id]
+    );
+    // response & goto list
+    response.writeHead(302,{'Location': '/'});
+    response.end();
   });
 })).listen(4444,function(request, response){
   console.log('server running at http://192.168.56.101:4444');
