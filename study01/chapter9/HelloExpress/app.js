@@ -4,13 +4,14 @@
  */
 
 var express = require('express')
-  , routes = require('./routes')
-  , http = require('http');
+  , routes  = require('./routes')
+  , http    = require('http');
 
 var app = express();
 
 app.configure(function(){
-  app.set('port', process.env.PORT || 3000);
+  app.set('case sensitive routes', true);
+  app.set('port', process.env.PORT || 4444);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
   app.use(express.favicon());
@@ -32,3 +33,20 @@ app.get('/', routes.index);
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
+
+/* ############################################################################
+ * nahong conding start
+ * ############################################################################
+ * */
+// chapter 9-4-1
+/*
+app.get('/life',function (request, response, next) {
+  // response
+  response.writeHead(200, {'Content-Type': 'text/html'});
+  response.end('<h1>Life Page</h1>');
+});
+*/
+// chapter 9-4-2 check /routes/index.js
+app.get('/life',routes.life);
+
+
