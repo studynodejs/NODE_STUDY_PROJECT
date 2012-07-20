@@ -48,5 +48,11 @@ app.get('/life',function (request, response, next) {
 */
 // chapter 9-4-2 check /routes/index.js
 app.get('/life',routes.life);
+// chapter 9-4-3 check /views/product_page.jade
+app.get('/product_page', function (request, response) {
+  response.render('product_page',{
+    title: 'Product Page'
+  });
+});
 
 
