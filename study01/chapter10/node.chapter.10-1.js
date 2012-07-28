@@ -30,4 +30,4 @@ client.query('SELECT * FROM TEST01' // test01 이라는 테이블 생성해놓�
     console.log(result);
   }
 });
-
+// test0000000001
