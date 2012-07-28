@@ -31,3 +31,4 @@ client.query('SELECT * FROM TEST01' // test01 이라는 테이블 생성해놓�
   }
 });
 // test0000000001
+// test0000000002 // 수정변경내역 확인(리눅스작업함)
